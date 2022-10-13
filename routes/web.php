@@ -23,7 +23,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::prefix('admin')->middleware('auth')->group(function () {
+Route::prefix('admin')->middleware('auth','isAdmin') ->group(function () {
     route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, "index"]);
 
 });
